@@ -17,7 +17,7 @@ const Cart = () => {
   }, [isOpen, handleClose])
 
   return (
-    <section className="py-20 px-[50px] h-screen">
+    <section className="py-20 px-[50px] min-h-screen">
       <div className="container mx-auto max-w-[1200px]">
         <div className="flex items-center justify-between py-6 border-b">
           <div className="uppercase text-sm font-semibold">Shopping Bag ({itemAmount})</div>
