@@ -20,11 +20,8 @@ const Cart = () => {
     <section className="py-20 px-[50px] min-h-screen">
       <div className="container mx-auto max-w-[1200px]">
         <div className="flex items-center justify-between py-6 border-b">
-          <div className="uppercase text-sm font-semibold">Shopping Bag ({itemAmount})</div>
-          <div
-            onClick={handleClose}
-            className="cursor-poniter w-8 h-8 flex justify-center items-center"
-          >
+          <div className="uppercase text-sm font-semibold">
+            Shopping Bag ({itemAmount})
           </div>
         </div>
         <div className="flex flex-col gap-y-2 border-b">

@@ -23,7 +23,7 @@ const Sidebar = () => {
         <div className="uppercase text-sm font-semibold">Shopping Bag ({itemAmount})</div>
         <div
           onClick={handleClose}
-          className="cursor-poniter w-8 h-8 flex justify-center items-center"
+          className="cursor-pointer w-8 h-8 flex justify-center items-center"
         >
           <IoMdArrowForward className="text-2xl" />
         </div>
