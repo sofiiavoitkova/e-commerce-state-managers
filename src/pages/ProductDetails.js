@@ -5,8 +5,8 @@ import { useCartStore } from "../stores/cartStore";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { addToCart } = useCartStore();
-  const { products } = useProductStore();
+  const addToCart = useCartStore.use.addToCart();
+  const products = useProductStore.use.products();
 
   const product = products.find((item) => {
     return item.id === parseInt(id);

@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { createSelectors } from "../utils/createSelectors";
 
-export const useCartStore = create(
+const baseCartStore = create(
   persist(
     (set, get) => ({
       cart: [],
@@ -121,3 +122,5 @@ export const useCartStore = create(
     }
   )
 );
+
+export const useCartStore = createSelectors(baseCartStore);
