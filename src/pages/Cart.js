@@ -1,16 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
 import { FiTrash2 } from "react-icons/fi";
 
 import CartItem from "../components/CartItem";
-import { SidebarContext } from "../contexts/SidebarContext";
-import { CartContext } from "../contexts/CartContext";
+import { useSidebarStore } from "../stores/sidebarStore";
+import { useCartStore } from "../stores/cartStore";
 
 const Cart = () => {
-  const { isOpen, handleClose } = useContext(SidebarContext);
-  const { cart, clearCart, itemAmount, total } = useContext(CartContext);
+  const { isOpen, handleClose } = useSidebarStore();
+  const { cart, clearCart, itemAmount, total } = useCartStore();
 
   useEffect(() => {
     if (isOpen) handleClose()

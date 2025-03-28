@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { IoMdAdd, IoMdClose, IoMdRemove } from "react-icons/io";
 
-import { CartContext } from "../contexts/CartContext";
+import { useCartStore } from "../stores/cartStore";
 
 const CartItem = ({ item }) => {
-  const { removeFromCart, increaseAmount, decreaseAmount } = useContext(CartContext);
+  const { removeFromCart, increaseAmount, decreaseAmount } = useCartStore();
   // destructure item
   const { id, title, image, price, amount } = item;
 
