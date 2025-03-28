@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
-
 import { Link } from "react-router-dom";
-
 import { FiTrash2 } from "react-icons/fi";
-
 import CartItem from "../components/CartItem";
 import { useSidebarStore } from "../stores/sidebarStore";
 import { useCartStore } from "../stores/cartStore";
