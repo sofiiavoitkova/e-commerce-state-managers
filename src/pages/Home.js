@@ -4,7 +4,8 @@ import Product from "../components/Product";
 import Hero from "../components/Hero";
 
 const Home = () => {
-  const { products, fetchProducts } = useProductStore();
+  const products = useProductStore((state) => state.products);
+  const fetchProducts = useProductStore((state) => state.fetchProducts);
 
   useEffect(() => {
     fetchProducts();

@@ -5,8 +5,8 @@ import { useCartStore } from "../stores/cartStore";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const { addToCart } = useCartStore();
-  const { products } = useProductStore();
+  const addToCart = useCartStore((state) => state.addToCart);
+  const products = useProductStore((state) => state.products);
 
   const product = products.find((item) => {
     return item.id === parseInt(id);
@@ -30,10 +30,19 @@ const ProductDetails = () => {
             <img className="max-w-[200px] lg:max-w-xs" src={image} alt="" />
           </div>
           <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-[26px] font-medium mb-2 max-w-[450px] mx-auto lg:mx-0">{title}</h1>
-            <div className="text-2xl text-red-500 font-medium mb-6">$ {price}</div>
+            <h1 className="text-[26px] font-medium mb-2 max-w-[450px] mx-auto lg:mx-0">
+              {title}
+            </h1>
+            <div className="text-2xl text-red-500 font-medium mb-6">
+              $ {price}
+            </div>
             <p className="mb-8">{description}</p>
-            <button onClick={()=>addToCart(product, product.id)} className='bg-primary py-4 px-8 text-white'>Add to cart</button>
+            <button
+              onClick={() => addToCart(product, product.id)}
+              className="bg-primary py-4 px-8 text-white"
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       </div>

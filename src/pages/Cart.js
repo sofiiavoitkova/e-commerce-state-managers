@@ -7,11 +7,14 @@ import { useCartStore } from "../stores/cartStore";
 
 const Cart = () => {
   const { isOpen, handleClose } = useSidebarStore();
-  const { cart, clearCart, itemAmount, total } = useCartStore();
+  const cart = useCartStore((state) => state.cart);
+  const clearCart = useCartStore((state) => state.clearCart);
+  const itemAmount = useCartStore((state) => state.itemAmount);
+  const total = useCartStore((state) => state.total);
 
   useEffect(() => {
-    if (isOpen) handleClose()
-  }, [isOpen, handleClose])
+    if (isOpen) handleClose();
+  }, [isOpen, handleClose]);
 
   return (
     <section className="py-20 px-[50px] min-h-screen">
