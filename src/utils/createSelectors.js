@@ -1,10 +1,10 @@
 export const createSelectors = (store) => {
-  const useStore = store;
-  useStore.use = {};
-  for (const k of Object.keys(store.getState())) {
-    Object.defineProperty(useStore.use, k, {
-      get: () => () => useStore((s) => s[k]),
-    });
+  const stateKeys = Object.keys(store.getState());
+  store.use = {};
+
+  for (const key of stateKeys) {
+    store.use[key] = () => store((state) => state[key]);
   }
-  return useStore;
+
+  return store;
 };
