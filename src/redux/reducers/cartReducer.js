@@ -1,3 +1,11 @@
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  INCREASE_AMOUNT,
+  DECREASE_AMOUNT,
+  CLEAR_CART,
+} from "../constants/actionTypes";
+
 const initialState = {
   cart: [],
   itemAmount: 0,
