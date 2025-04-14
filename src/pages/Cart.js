@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { FiTrash2 } from "react-icons/fi";
 import CartItem from "../components/CartItem";
-import { useSidebarStore } from "../stores/sidebarStore";
-import { useCartStore } from "../stores/cartStore";
+import { closeSidebar } from "../redux/actions/sidebarActions";
+import { clearCart } from "../redux/actions/cartActions";
 
 const Cart = () => {
-  const isOpen = useSidebarStore.use.isOpen();
-  const handleClose = useSidebarStore.use.handleClose();  
-  const cart = useCartStore.use.cart();
-  const clearCart = useCartStore.use.clearCart();
-  const itemAmount = useCartStore.use.itemAmount();
-  const total = useCartStore.use.total();
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.sidebar.isOpen);
+  const cart = useSelector((state) => state.cart.cart);
+  const total = useSelector((state) => state.cart.total);
+  const itemAmount = useSelector((state) => state.cart.itemAmount);
 
   useEffect(() => {
-    if (isOpen) handleClose()
-  }, [isOpen, handleClose])
+    if (isOpen) dispatch(closeSidebar());
+  }, [isOpen, dispatch]);
 
   return (
     <section className="py-20 px-[50px] min-h-screen">
@@ -38,7 +38,7 @@ const Cart = () => {
                 {parseFloat(total).toFixed(2)}
               </div>
               <div
-                onClick={clearCart}
+                onClick={() => dispatch(clearCart())}
                 className="cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl"
               >
                 <FiTrash2 />

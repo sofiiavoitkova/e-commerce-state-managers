@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useSidebarStore } from "../stores/sidebarStore";
-import { useCartStore } from "../stores/cartStore";
+import { useSelector, useDispatch } from "react-redux";
+import { setSidebarOpen } from "../redux/actions/sidebarActions";
 import { Link } from "react-router-dom";
 import Logo from "../img/logo.svg";
 import { BsBag } from "react-icons/bs";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
-  const isOpen = useSidebarStore.use.isOpen();
-  const setIsOpen = useSidebarStore.use.setIsOpen();
-  const itemAmount = useCartStore.use.itemAmount();
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.sidebar.isOpen);
+  const itemAmount = useSelector((state) => state.cart.itemAmount);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +34,7 @@ const Header = () => {
         </Link>
 
         <div
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => dispatch(setSidebarOpen(!isOpen))}
           className="cursor-pointer flex relative"
         >
           <BsBag className="text-2xl" />

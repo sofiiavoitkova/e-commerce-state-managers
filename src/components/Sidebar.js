@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { IoMdArrowForward } from "react-icons/io";
 import { FiTrash2 } from "react-icons/fi";
 import CartItem from "../components/CartItem";
-import { useSidebarStore } from "../stores/sidebarStore";
-import { useCartStore } from "../stores/cartStore";
+import { closeSidebar } from "../redux/actions/sidebarActions";
+import { clearCart } from "../redux/actions/cartActions";
 
 const Sidebar = () => {
-  const isOpen = useSidebarStore.use.isOpen();
-  const handleClose = useSidebarStore.use.handleClose();
-  const cart = useCartStore.use.cart();
-  const clearCart = useCartStore.use.clearCart();
-  const itemAmount = useCartStore.use.itemAmount();
-  const total = useCartStore.use.total();
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.sidebar.isOpen);
+  const cart = useSelector((state) => state.cart.cart);
+  const itemAmount = useSelector((state) => state.cart.itemAmount);
+  const total = useSelector((state) => state.cart.total);
 
   return (
     <div
@@ -25,7 +25,7 @@ const Sidebar = () => {
           Shopping Bag ({itemAmount})
         </div>
         <div
-          onClick={handleClose}
+          onClick={() => dispatch(closeSidebar())}
           className="cursor-pointer w-8 h-8 flex justify-center items-center"
         >
           <IoMdArrowForward className="text-2xl" />
@@ -43,7 +43,7 @@ const Sidebar = () => {
             {parseFloat(total).toFixed(2)}
           </div>
           <div
-            onClick={clearCart}
+            onClick={() => dispatch(clearCart())}
             className="cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl"
           >
             <FiTrash2 />
