@@ -1,6 +1,6 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../redux/actions/productActions";
+import { setProducts } from "../redux/actions/productActions";
 import Product from "../components/Product";
 import Hero from "../components/Hero";
 import { selectAllProducts } from "../redux/selectors/productSelectors";
@@ -10,7 +10,17 @@ const Home = () => {
   const products = useSelector(selectAllProducts);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    const fetchData = async () => {
+      try {
+        const res = await fetch("https://fakestoreapi.com/products");
+        const data = await res.json();
+        dispatch(setProducts(data));
+      } catch (err) {
+        console.error("Fetch error:", err);
+      }
+    };
+
+    fetchData();
   }, [dispatch]);
 
   const filteredProducts = products.filter((item) => {
