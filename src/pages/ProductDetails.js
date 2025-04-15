@@ -2,11 +2,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../redux/actions/cartActions";
+import { selectAllProducts } from "../redux/selectors/productSelectors";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
+  const products = useSelector(selectAllProducts);
 
   const product = products.find((item) => {
     return item.id === parseInt(id);

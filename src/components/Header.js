@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSidebarOpen } from "../redux/actions/sidebarActions";
+import { selectItemAmount } from "../redux/selectors/cartSelectors";
+import { selectIsSidebarOpen } from "../redux/selectors/sidebarSelectors";
 import { Link } from "react-router-dom";
 import Logo from "../img/logo.svg";
 import { BsBag } from "react-icons/bs";
@@ -8,8 +10,8 @@ import { BsBag } from "react-icons/bs";
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const dispatch = useDispatch();
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-  const itemAmount = useSelector((state) => state.cart.itemAmount);
+  const itemAmount = useSelector(selectItemAmount);
+  const isOpen = useSelector(selectIsSidebarOpen);
 
   useEffect(() => {
     const handleScroll = () => {

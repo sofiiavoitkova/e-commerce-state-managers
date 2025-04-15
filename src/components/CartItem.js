@@ -10,7 +10,6 @@ import {
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
-
   const { id, title, image, price, amount } = item;
 
   return (

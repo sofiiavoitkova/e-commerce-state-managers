@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../redux/actions/productActions";
 import Product from "../components/Product";
 import Hero from "../components/Hero";
+import { selectAllProducts } from "../redux/selectors/productSelectors";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
+  const products = useSelector(selectAllProducts);
 
   useEffect(() => {
     dispatch(fetchProducts());

@@ -6,13 +6,19 @@ import { FiTrash2 } from "react-icons/fi";
 import CartItem from "../components/CartItem";
 import { closeSidebar } from "../redux/actions/sidebarActions";
 import { clearCart } from "../redux/actions/cartActions";
+import { selectIsSidebarOpen } from "../redux/selectors/sidebarSelectors";
+import {
+  selectCartItems,
+  selectItemAmount,
+  selectCartTotal,
+} from "../redux/selectors/cartSelectors";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const isOpen = useSelector((state) => state.sidebar.isOpen);
-  const cart = useSelector((state) => state.cart.cart);
-  const itemAmount = useSelector((state) => state.cart.itemAmount);
-  const total = useSelector((state) => state.cart.total);
+  const isOpen = useSelector(selectIsSidebarOpen);
+  const cart = useSelector(selectCartItems);
+  const itemAmount = useSelector(selectItemAmount);
+  const total = useSelector(selectCartTotal);
 
   return (
     <div
