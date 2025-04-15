@@ -4,7 +4,7 @@ import {
   INCREASE_AMOUNT,
   DECREASE_AMOUNT,
   CLEAR_CART,
-} from "../constants/actionTypes";
+} from "../constants/cartActionTypes";
 
 export const addToCart = (product, id) => ({
   type: ADD_TO_CART,

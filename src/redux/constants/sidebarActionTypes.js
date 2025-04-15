@@ -1,0 +1,2 @@
+export const SET_SIDEBAR_OPEN = "SET_SIDEBAR_OPEN";
+export const CLOSE_SIDEBAR = "CLOSE_SIDEBAR";

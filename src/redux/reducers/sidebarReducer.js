@@ -1,4 +1,4 @@
-import { SET_SIDEBAR_OPEN, CLOSE_SIDEBAR } from "../constants/actionTypes";
+import { SET_SIDEBAR_OPEN, CLOSE_SIDEBAR } from "../constants/sidebarActionTypes";
 
 const initialState = {
   isOpen: false,

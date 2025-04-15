@@ -1,4 +1,4 @@
-import { SET_PRODUCTS } from "../constants/actionTypes";
+import { SET_PRODUCTS } from "../constants/productActionTypes";
 
 export const fetchProducts = () => async (dispatch) => {
   try {
