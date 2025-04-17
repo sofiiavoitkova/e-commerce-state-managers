@@ -1,6 +1,6 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProducts } from "../redux/actions/productActions";
+import { setProducts } from "../redux/slices/productSlice";
 import Product from "../components/Product";
 import Hero from "../components/Hero";
 import { selectAllProducts } from "../redux/selectors/productSelectors";

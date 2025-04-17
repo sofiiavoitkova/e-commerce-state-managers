@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { IoMdArrowForward } from "react-icons/io";
 import { FiTrash2 } from "react-icons/fi";
 import CartItem from "../components/CartItem";
-import { closeSidebar } from "../redux/actions/sidebarActions";
-import { clearCart } from "../redux/actions/cartActions";
+import { closeSidebar } from "../redux/slices/sidebarSlice";
+import { clearCart } from "../redux/slices/cartSlice";
 import { selectIsSidebarOpen } from "../redux/selectors/sidebarSelectors";
 import {
   selectCartItems,

@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart } from "../redux/actions/cartActions";
+import { addToCart } from "../redux/slices/cartSlice";
 import { selectAllProducts } from "../redux/selectors/productSelectors";
 
 const ProductDetails = () => {

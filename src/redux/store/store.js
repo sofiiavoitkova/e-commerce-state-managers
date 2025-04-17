@@ -3,10 +3,12 @@ import cartReducer from "../slices/cartSlice";
 import productReducer from "../slices/productSlice";
 import sidebarReducer from "../slices/sidebarSlice";
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     cart: cartReducer,
     products: productReducer,
     sidebar: sidebarReducer,
   },
 });
+
+export default store;

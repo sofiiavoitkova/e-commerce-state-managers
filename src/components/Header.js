@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setSidebarOpen } from "../redux/actions/sidebarActions";
+import { setSidebarOpen } from "../redux/slices/sidebarSlice";
 import { selectItemAmount } from "../redux/selectors/cartSelectors";
 import { selectIsSidebarOpen } from "../redux/selectors/sidebarSelectors";
 import { Link } from "react-router-dom";

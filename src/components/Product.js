@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BsPlus, BsEyeFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/actions/cartActions";
+import { addToCart } from "../redux/slices/cartSlice";
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
