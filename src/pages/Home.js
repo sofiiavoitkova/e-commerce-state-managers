@@ -3,19 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../redux/slices/productSlice";
 import Product from "../components/Product";
 import Hero from "../components/Hero";
-import { selectAllProducts } from "../redux/selectors/productSelectors";
+import { selectAllProducts, selectProductStatus} from "../redux/selectors/productSelectors";
 
 const Home = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
-  const productStatus = useSelector((state) => state.products.status);
-  const error = useSelector((state) => state.products.error);
+  const status = useSelector(selectProductStatus);
 
   useEffect(() => {
-    if (productStatus === "idle") {
+    if (status === "idle") {
       dispatch(fetchProducts());
     }
-  }, [dispatch, productStatus]);
+  }, [dispatch, status]);
 
   const filteredProducts = products.filter((item) => {
     return (
