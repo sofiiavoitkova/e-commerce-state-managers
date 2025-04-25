@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../redux/hooks/hook";
 import { setSidebarOpen } from "../redux/slices/sidebarSlice";
 import { selectItemAmount } from "../redux/selectors/cartSelectors";
 import { selectIsSidebarOpen } from "../redux/selectors/sidebarSelectors";
@@ -9,9 +9,9 @@ import { BsBag } from "react-icons/bs";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
-  const dispatch = useDispatch();
-  const itemAmount = useSelector(selectItemAmount);
-  const isOpen = useSelector(selectIsSidebarOpen);
+  const dispatch = useAppDispatch();
+  const itemAmount = useAppSelector(selectItemAmount);
+  const isOpen = useAppSelector(selectIsSidebarOpen);
 
   useEffect(() => {
     const handleScroll = () => {

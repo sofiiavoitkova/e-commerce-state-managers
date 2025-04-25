@@ -1,23 +1,34 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { Product } from "../../types/productTypes";
 
-const initialState = {
+interface ProductState {
+  products: Product[];
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
+}
+
+const initialState: ProductState = {
   products: [],
   status: "idle",
   error: null,
 };
 
-export const fetchProducts = createAsyncThunk(
-  "products/fetchProducts",
-  async (_, { rejectWithValue }) => {
-    try {
-      const res = await fetch("https://fakestoreapi.com/products");
-      const data = await res.json();
-      return data;
-    } catch (err) {
+export const fetchProducts = createAsyncThunk<
+  Product[],
+  void,
+  { rejectValue: string }
+>("products/fetchProducts", async (_, { rejectWithValue }) => {
+  try {
+    const res = await fetch("https://fakestoreapi.com/products");
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    if (err instanceof Error) {
       return rejectWithValue(err.message);
     }
+    return rejectWithValue("An unexpected error occurred");
   }
-);
+});
 
 const productSlice = createSlice({
   name: "products",
@@ -35,7 +46,7 @@ const productSlice = createSlice({
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload;
+        state.error = action.payload ?? "Something went wrong";
       });
   },
 });

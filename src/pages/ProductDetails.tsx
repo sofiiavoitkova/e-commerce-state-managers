@@ -1,17 +1,15 @@
-import React from "react";
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../redux/hooks/hook";
 import { addToCart } from "../redux/slices/cartSlice";
 import { selectAllProducts } from "../redux/selectors/productSelectors";
+import { Product } from "../types/productTypes";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const products = useSelector(selectAllProducts);
+  const dispatch = useAppDispatch();
+  const products = useAppSelector(selectAllProducts);
 
-  const product = products.find((item) => {
-    return item.id === parseInt(id);
-  });
+  const product = products.find((item: Product) => item.id === parseInt(id || "", 10));
 
   if (!product) {
     return (
@@ -39,7 +37,7 @@ const ProductDetails = () => {
             </div>
             <p className="mb-8">{description}</p>
             <button
-              onClick={() => dispatch(addToCart(product, product.id))}
+              onClick={() => dispatch(addToCart(product))}
               className="bg-primary py-4 px-8 text-white"
             >
               Add to cart

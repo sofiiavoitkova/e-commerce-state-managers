@@ -1,15 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../redux/hooks/hook";
 import { IoMdAdd, IoMdClose, IoMdRemove } from "react-icons/io";
 import {
   removeFromCart,
   increaseAmount,
   decreaseAmount,
 } from "../redux/slices/cartSlice";
+import { CartProduct } from "../types/cartTypes";
 
-const CartItem = ({ item }) => {
-  const dispatch = useDispatch();
+type CartItemProps = {
+  item: CartProduct;
+};
+
+const CartItem = ({ item }: CartItemProps) => {
+  const dispatch = useAppDispatch();
   const { id, title, image, price, amount } = item;
 
   return (
@@ -54,7 +59,7 @@ const CartItem = ({ item }) => {
             <div className="flex flex-1 justify-around items-center">
               $ {price}
             </div>
-            <div className="flex flex-1 justify-end items-center text-primary font-medium">{`$ ${parseFloat(
+            <div className="flex flex-1 justify-end items-center text-primary font-medium">{`$ ${(
               price * amount
             ).toFixed(2)}`}</div>
           </div>

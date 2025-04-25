@@ -1,12 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { CartProduct } from "../../types/cartTypes";
 
-const initialState = {
+interface CartState {
+  cart: CartProduct[];
+  itemAmount: number;
+  total: number;
+}
+
+const initialState: CartState = {
   cart: [],
   itemAmount: 0,
   total: 0,
 };
 
-const updateTotals = (cart) => {
+const updateTotals = (cart: CartProduct[]) => {
   const itemAmount = cart.reduce((sum, item) => sum + item.amount, 0);
   const total = cart.reduce((sum, item) => sum + item.amount * item.price, 0);
   return { itemAmount, total };

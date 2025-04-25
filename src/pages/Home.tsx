@@ -1,14 +1,14 @@
-import { React, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../redux/hooks/hook";
 import { fetchProducts } from "../redux/slices/productSlice";
 import Product from "../components/Product";
 import Hero from "../components/Hero";
 import { selectAllProducts, selectProductStatus} from "../redux/selectors/productSelectors";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const products = useSelector(selectAllProducts);
-  const status = useSelector(selectProductStatus);
+  const dispatch = useAppDispatch();
+  const products = useAppSelector(selectAllProducts);
+  const status = useAppSelector(selectProductStatus);
 
   useEffect(() => {
     if (status === "idle") {
